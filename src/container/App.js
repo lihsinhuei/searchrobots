@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchBox from './SearchBox';
-import RobotsArea from './RobotsArea';
-import {robots} from './robots';
+import SearchBox from '../components/SearchBox';
+import RobotsArea from '../components/RobotsArea';
+import {robots} from '../components/robots';
 import './App.css';
 
 
