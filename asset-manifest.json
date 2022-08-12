@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/searchrobots/static/css/main.663a24fe.css",
+    "main.js": "/searchrobots/static/js/main.911dfbe1.js",
+    "static/media/RubikDirt-Regular.ttf": "/searchrobots/static/media/RubikDirt-Regular.7c2e9501e6fa6713b659.ttf",
+    "index.html": "/searchrobots/index.html",
+    "main.663a24fe.css.map": "/searchrobots/static/css/main.663a24fe.css.map",
+    "main.911dfbe1.js.map": "/searchrobots/static/js/main.911dfbe1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.663a24fe.css",
+    "static/js/main.911dfbe1.js"
+  ]
+}
