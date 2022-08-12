@@ -1,25 +1,56 @@
-import logo from './logo.svg';
+import React from 'react';
+import SearchBox from './SearchBox';
+import RobotsArea from './RobotsArea';
+import {robots} from './robots';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+	constructor (){
+		super();
+		this.state = {
+			// robots : robots,
+			robots : [], 
+			searchContent : '',
+		}
+	}
+
+
+//callback function: update state searchContent 
+	updateSearchContent = (event) =>{ 
+		this.setState({searchContent:event.target.value}); 
+	}
+
+	componentDidMount(){
+		fetch('https://jsonplaceholder.typicode.com/users')
+		 .then((response)=>response.json())
+		 .then((users) => this.setState({robots:users}));
+	}
+
+	render(){
+		if(this.state.robots.length === 0){
+			return <h1>loading</h1>
+			//in case the fetching is too slow
+		}else{
+			let matching = this.state.robots.filter(robot =>{
+      		return robot.name.toLowerCase().includes(this.state.searchContent.toLowerCase());
+    	})
+
+    	console.log(matching);
+		return (
+			<div> 
+				<h1 className="tc">MY DEAR ROBOTS</h1>
+				<SearchBox searchChange={this.updateSearchContent} />
+				<div style = {{ "overflow": 'scroll', border: '1px solid gray', height: '800px', margin : "10px"}} >
+					<RobotsArea robotsList={matching}/>
+				</div>
+			</div>
+		);
+
+		}
+
+	}
 }
+
 
 export default App;
